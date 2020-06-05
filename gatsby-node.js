@@ -29,13 +29,13 @@ exports.createPages = async ({ actions }) => {
   const { createPage } = actions
 
   const paths = []
-  for (let i = 1; i < 3; i++) {
+  for (let i = 1; i < 3000; i++) {
     const id = uuidv4()
     const sitePath = `/${id}.html`
     if (i < 100) {
       paths.push(sitePath)
     }
-    fs.writeFileSync(`./public${sitePath}`, `hello ${id}`)
+    fs.writeFileSync(`./public${sitePath}`, `hello ${id} - ${crypto.randomBytes(500000).toString('hex')}`)
   }
 
   createPage({
